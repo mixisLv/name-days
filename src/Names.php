@@ -5,7 +5,7 @@
  */
 
 
-namespace NameDays;
+namespace mixisLv\NameDays;
 
 
 class Names

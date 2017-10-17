@@ -4,7 +4,7 @@
  * @copyright Copyright (C) 2017 Mikus Rozenbergs
  */
 
-namespace NameDays;
+namespace mixisLv\NameDays;
 
 class NameDays
 {

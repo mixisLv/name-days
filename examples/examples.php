@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php'; // Autoload files using Composer autoload
 
-use NameDays\NameDays;
+use mixisLv\NameDays\NameDays;
 
 echo '<pre>';
 $nameDays = new NameDays();

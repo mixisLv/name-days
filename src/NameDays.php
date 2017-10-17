@@ -67,7 +67,7 @@ class NameDays
      *
      * @param $name
      *
-     * @return Names|\Exception
+     * @return Names
      */
     public function date($name)
     {

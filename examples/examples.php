@@ -8,7 +8,7 @@ echo '<pre>';
 $nameDays = new NameDays();
 
 var_dump($nameDays->names("09-29"));
-var_dump($nameDays->names("09-29")->toarray());
+var_dump($nameDays->names("09-29")->toArray());
 var_dump($nameDays->names("09-29")->toString());
 var_dump($nameDays->date("MiKuS")->key());
 

@@ -3,6 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/mixisLv/name-days.svg)](https://github.com/mixisLv/name-days/blob/master/LICENSE)
 [![Packagist](https://img.shields.io/packagist/v/mixisLv/name-days.svg)]()
 [![Coverage Status](https://coveralls.io/repos/github/mixisLv/name-days/badge.svg?branch=master)](https://coveralls.io/github/mixisLv/name-days?branch=master)
+
 Latvian name day calendar data. I took names from [Latvian State Language Center's](http://vvc.gov.lv/index.php?route=product/category&path=193_199_200) official website.
 
 ## Requirements

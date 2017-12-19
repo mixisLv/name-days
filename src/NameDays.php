@@ -15,6 +15,8 @@ class NameDays
      * NameDays constructor.
      *
      * @param string $source
+     *
+     * @throws \Exception
      */
     public function __construct($source = 'name-days-lv')
     {

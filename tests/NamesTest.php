@@ -30,4 +30,35 @@ final class NamesTest extends TestCase
 
         $this->assertSame($names, 'Miķelis, Mikus, Miks, Mihails');
     }
+
+    public function testNamesKey()
+    {
+        $nameDays = new NameDays();
+        $key = $nameDays->date("MiKuS")->key();
+
+        $this->assertSame($key, '09-29');
+    }
+
+    public function testNameKeyNotFound()
+    {
+        $nameDays = new NameDays();
+        $key = $nameDays->date("name-not-found")->key();
+
+        $this->assertSame($key, '09-29');
+    }
+    public function testExtendedNames()
+    {
+        $nameDays = new NameDays('name-days-lv-extended');
+        $names = $nameDays->names("09-24")->toArray();
+
+        $this->assertSame($names, ["Agrits", "Agrons", "Steidzīte", "Steiga"]);
+    }
+
+    /**
+     * @expectedException     \Exception
+     */
+    public function testException()
+    {
+        new NameDays('test-exception');
+    }
 }

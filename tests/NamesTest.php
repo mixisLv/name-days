@@ -44,7 +44,7 @@ final class NamesTest extends TestCase
         $nameDays = new NameDays();
         $key      = $nameDays->date("name-not-found")->key();
 
-        $this->assertSame($key, '09-29');
+        $this->assertSame($key, '');
     }
 
     public function testExtendedNames()

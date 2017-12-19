@@ -1,6 +1,10 @@
 language: php
 php:
   - '7.0'
+settings:
+  colors: true
+  memory_limit: 1024M
 before_script:
   - composer install
-
+script:
+- vendor/bin/phpunit --coverage-clover=coverage.xml

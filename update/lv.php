@@ -30,12 +30,12 @@ function parseNames($rows) {
     $nameDays = [];
     foreach ($rows as $row) {
         $data = explode(".", $row->nodeValue);
-        if(isset($data[1])) {
+        if (isset($data[1])) {
             $nameDays[sprintf("%'.02d", $month) . "-" . sprintf("%'.02d", $data[0])] = array_map(
                     'trim', explode(',', $data[1])
             );
         } else {
-            if (strlen(trim($data[0])) < 4 ) { // kaut kas nav labi ar mēnešiem
+            if (strlen(trim($data[0])) < 4) { // kaut kas nav labi ar mēnešiem
                 continue;
             }
             $month++;
@@ -45,12 +45,12 @@ function parseNames($rows) {
     return $nameDays;
 }
 
-$lastUpdate = "/** Last updated: ".date('Y-m-d H:i:s')." */\n\n";
+$lastUpdate = "/** Last updated: " . date('Y-m-d H:i:s') . " */\n\n";
 
 echo $lastUpdate;
 
 $jsonLvStd = getJsonString('http://vvc.gov.lv/index.php?route=product/category&path=193_199_200');
-file_put_contents('./../data/name-days-lv.json',   $jsonLvStd);
+file_put_contents('./../data/name-days-lv.json', $jsonLvStd);
 
 ?>
 </pre>

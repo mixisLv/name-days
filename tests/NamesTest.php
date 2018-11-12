@@ -15,6 +15,11 @@ use PHPUnit\Framework\TestCase;
 
 final class NamesTest extends TestCase
 {
+    /**
+     * testNamesArray
+     *
+     * @throws \Exception
+     */
     public function testNamesArray()
     {
         $nameDays = new NameDays();
@@ -23,6 +28,11 @@ final class NamesTest extends TestCase
         $this->assertSame($names, ['Miķelis', 'Mikus', 'Miks', 'Mihails']);
     }
 
+    /**
+     * testNamesString
+     *
+     * @throws \Exception
+     */
     public function testNamesString()
     {
         $nameDays = new NameDays();
@@ -31,6 +41,11 @@ final class NamesTest extends TestCase
         $this->assertSame($names, 'Miķelis, Mikus, Miks, Mihails');
     }
 
+    /**
+     * testNamesKey
+     *
+     * @throws \Exception
+     */
     public function testNamesKey()
     {
         $nameDays = new NameDays();
@@ -39,6 +54,11 @@ final class NamesTest extends TestCase
         $this->assertSame($key, '09-29');
     }
 
+    /**
+     * testNameKeyNotFound
+     *
+     * @throws \Exception
+     */
     public function testNameKeyNotFound()
     {
         $nameDays = new NameDays();
@@ -47,6 +67,11 @@ final class NamesTest extends TestCase
         $this->assertSame($key, '');
     }
 
+    /**
+     * testExtendedNames
+     *
+     * @throws \Exception
+     */
     public function testExtendedNames()
     {
         $nameDays = new NameDays('name-days-lv-extended');

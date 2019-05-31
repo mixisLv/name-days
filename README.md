@@ -1,7 +1,7 @@
 # Latvian Name Day Calendar
 [![Build Status](https://travis-ci.org/mixisLv/name-days.svg?branch=master)](https://travis-ci.org/mixisLv/name-days)
 [![GitHub license](https://img.shields.io/github/license/mixisLv/name-days.svg)](https://github.com/mixisLv/name-days/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/mixisLv/name-days.svg)]()
+[![GitHub release](https://img.shields.io/github/release/mixisLv/name-days.svg)](https://github.com/mixisLv/name-days/releases/latest)
 [![Coverage Status](https://coveralls.io/repos/github/mixisLv/name-days/badge.svg?branch=master)](https://coveralls.io/github/mixisLv/name-days?branch=master)
 
 Latvian name day calendar data. I took names from [Latvian State Language Center's](http://vvc.gov.lv/index.php?route=product/category&path=193_199_200) official website.

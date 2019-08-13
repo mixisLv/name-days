@@ -80,11 +80,9 @@ final class NamesTest extends TestCase
         $this->assertSame($names, ["Agrits", "Agrons", "Steidzīte", "Steiga"]);
     }
 
-    /**
-     * @expectedException     \Exception
-     */
     public function testException()
     {
+        $this->expectException('\Exception');
         new NameDays('test-exception');
     }
 }

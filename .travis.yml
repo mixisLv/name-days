@@ -1,7 +1,7 @@
 language: php
 
 php:
-  - '7.1'
+  - '7.2'
 
 # You can delete cache using travis-ci web interface
 cache:

@@ -23,7 +23,7 @@ final class NamesTest extends TestCase
     public function testNamesArray()
     {
         $nameDays = new NameDays();
-        $names    = $nameDays->names("09-29")->toArray();
+        $names    = $nameDays->getNames("09-29")->toArray();
 
         $this->assertSame($names, ['Miķelis', 'Mikus', 'Miks', 'Mihails']);
     }
@@ -36,7 +36,7 @@ final class NamesTest extends TestCase
     public function testNamesString()
     {
         $nameDays = new NameDays();
-        $names    = $nameDays->names("09-29")->toString();
+        $names    = $nameDays->getNames("09-29")->toString();
 
         $this->assertSame($names, 'Miķelis, Mikus, Miks, Mihails');
     }
@@ -49,7 +49,7 @@ final class NamesTest extends TestCase
     public function testNamesKey()
     {
         $nameDays = new NameDays();
-        $key      = $nameDays->date("MiKuS")->key();
+        $key      = $nameDays->getDate("MiKuS");
 
         $this->assertSame($key, '09-29');
     }
@@ -62,9 +62,9 @@ final class NamesTest extends TestCase
     public function testNameKeyNotFound()
     {
         $nameDays = new NameDays();
-        $key      = $nameDays->date("name-not-found")->key();
+        $key      = $nameDays->getDate("name-not-found");
 
-        $this->assertSame($key, '');
+        $this->assertSame($key, null);
     }
 
     /**
@@ -75,7 +75,7 @@ final class NamesTest extends TestCase
     public function testExtendedNames()
     {
         $nameDays = new NameDays('name-days-lv-extended');
-        $names    = $nameDays->names("09-24")->toArray();
+        $names    = $nameDays->getNames("09-24")->toArray();
 
         $this->assertSame($names, ["Agrits", "Agrons", "Steidzīte", "Steiga"]);
     }

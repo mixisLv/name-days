@@ -51,17 +51,18 @@ class NameDays
         $this->data = json_decode(file_get_contents($dataFile), true);
     }
 
-
     /**
-     * names
+     * getNames
      *
      * @param $date
      *
      * @return Names
      */
-    public function names($date)
+    public function getNames($date=null)
     {
-        return new Names($date, $this->data[$date] ?? []);
+        $key = substr($date ?? date('m-d'), -5);
+
+        return new Names($key, $this->data[$key] ?? []);
     }
 
     /**
@@ -69,16 +70,20 @@ class NameDays
      *
      * @param $name
      *
-     * @return Names
+     * @param bool $withYear
+     * @return string
      */
-    public function date($name)
+    public function getDate($name, $withYear = false)
     {
+        $date = null;
         $searchName = mb_strtolower($name);
         foreach ($this->data as $key => $names) {
             if (in_array($searchName, array_map('mb_strtolower', $names))) {
-                return new Names($key, $names);
+                $date =  (new Names($key, $names))->key();
+                break;
             }
         }
-        return new Names('', []);
+
+        return $date ? ($withYear ? date('Y-') : '') . $date : null;
     }
 }

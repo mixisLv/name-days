@@ -8,7 +8,7 @@ Latvian name day calendar data. I took names from [Latvian State Language Center
 
 ## Requirements
 
-* PHP >= 7.0.0
+* PHP >= 7.2.0
 
 ## Installation 
 
@@ -19,7 +19,7 @@ composer require "mixislv/name-days"
 Or by adding the following to your composer.json:
 ```shell    
 "require": {
-    "mixislv/name-days": "^1.0"
+    "mixislv/name-days": "^2.0"
 }
 ```
 

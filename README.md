@@ -30,10 +30,13 @@ use mixisLv\NameDays\NameDays;
 
 $nameDays = new NameDays();
 
-var_dump($nameDays->names("09-29"));
-var_dump($nameDays->names("09-29")->toArray());
-var_dump($nameDays->names("09-29")->toString());
-var_dump($nameDays->date("MiKuS")->key());
+var_dump($nameDays->getNames());
+var_dump($nameDays->getNames("09-29"));
+var_dump($nameDays->getNames("2019-09-29"));
+var_dump($nameDays->getNames("09-29")->toArray());
+var_dump($nameDays->getNames("09-29")->toString());
+var_dump($nameDays->getDate("MiKuS"));
+var_dump($nameDays->getDate("MiKuS", true));
 ```
 
 Check out [examples directory](/examples) for usage examples

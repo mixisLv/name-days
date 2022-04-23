@@ -28,7 +28,7 @@ class NameDays
     /**
      * loadData
      *
-     * @param $source
+     * @param string $source
      *
      * @throws \Exception
      */
@@ -54,11 +54,11 @@ class NameDays
     /**
      * getNames
      *
-     * @param $date
+     * @param string|null $date
      *
      * @return Names
      */
-    public function getNames($date=null)
+    public function getNames($date = null)
     {
         $key = substr($date ?? date('m-d'), -5);
 
@@ -68,18 +68,18 @@ class NameDays
     /**
      * date
      *
-     * @param $name
-     *
+     * @param string $name
      * @param bool $withYear
+     *
      * @return string
      */
     public function getDate($name, $withYear = false)
     {
-        $date = null;
+        $date       = null;
         $searchName = mb_strtolower($name);
         foreach ($this->data as $key => $names) {
             if (in_array($searchName, array_map('mb_strtolower', $names))) {
-                $date =  (new Names($key, $names))->key();
+                $date = (new Names($key, $names))->key();
                 break;
             }
         }

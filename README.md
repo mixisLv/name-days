@@ -4,22 +4,22 @@
 [![GitHub release](https://img.shields.io/github/release/mixisLv/name-days.svg)](https://github.com/mixisLv/name-days/releases/latest)
 [![Coverage Status](https://coveralls.io/repos/github/mixisLv/name-days/badge.svg?branch=master)](https://coveralls.io/github/mixisLv/name-days?branch=master)
 
-Latvian name day calendar data. I took names from [Latvian State Language Center's](http://vvc.gov.lv/index.php?route=product/category&path=193_199_200) official website.
+Latvian name day calendar data. I took names from [Latvian State Language Center's](https://vvc.gov.lv/index.php?route=product/category&path=193_199) official website.
 
 ## Requirements
 
-* PHP >= 7.2.0
+* PHP >= 7.3.0
 
 ## Installation 
 
 You can install name-days via Composer with:
 ```shell
 composer require "mixislv/name-days"
-```    
+```
 Or by adding the following to your composer.json:
 ```shell    
 "require": {
-    "mixislv/name-days": "^2.0"
+    "mixislv/name-days": "^2.1"
 }
 ```
 

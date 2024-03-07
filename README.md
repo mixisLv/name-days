@@ -4,7 +4,7 @@
 [![GitHub release](https://img.shields.io/github/release/mixisLv/name-days.svg)](https://github.com/mixisLv/name-days/releases/latest)
 [![Coverage Status](https://coveralls.io/repos/github/mixisLv/name-days/badge.svg?branch=master)](https://coveralls.io/github/mixisLv/name-days?branch=master)
 
-Latvian name day calendar data. I took names from [Latvian State Language Center's](https://vvc.gov.lv/index.php?route=product/category&path=193_199) official website.
+Latvian name day calendar data. I took names from [Latvian State Language Center's](https://www.vvc.gov.lv/lv/kalendarvardu-ekspertu-komisija) official website.
 
 ## Requirements
 

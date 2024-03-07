@@ -1,12 +1,4 @@
 <?php
-/*
- * This file is part of the Comparator package.
- *
- * (c) Sebastian Bergmann <sebastian@phpunit.de>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 use mixisLv\NameDays\NameDays;
 use PHPUnit\Framework\TestCase;
@@ -18,7 +10,7 @@ final class NamesTest extends TestCase
      *
      * @throws \Exception
      */
-    public function testNamesArray()
+    public function testNamesArray(): void
     {
         $nameDays = new NameDays();
         $names    = $nameDays->getNames("09-29")->toArray();
@@ -31,7 +23,7 @@ final class NamesTest extends TestCase
      *
      * @throws \Exception
      */
-    public function testNamesString()
+    public function testNamesString(): void
     {
         $nameDays = new NameDays();
         $names    = $nameDays->getNames("09-29")->toString();
@@ -44,7 +36,7 @@ final class NamesTest extends TestCase
      *
      * @throws \Exception
      */
-    public function testNamesKey()
+    public function testNamesKey(): void
     {
         $nameDays = new NameDays();
         $key      = $nameDays->getDate("MiKuS");
@@ -57,7 +49,7 @@ final class NamesTest extends TestCase
      *
      * @throws \Exception
      */
-    public function testEmpty()
+    public function testEmpty(): void
     {
         $nameDays = new NameDays();
         $key      = $nameDays->getNames("02-29");
@@ -71,12 +63,12 @@ final class NamesTest extends TestCase
      *
      * @throws \Exception
      */
-    public function testNameKeyNotFound()
+    public function testNameKeyNotFound(): void
     {
         $nameDays = new NameDays();
         $key      = $nameDays->getDate("name-not-found");
 
-        $this->assertSame($key, null);
+        $this->assertNull($key);
     }
 
     /**
@@ -84,7 +76,7 @@ final class NamesTest extends TestCase
      *
      * @throws \Exception
      */
-    public function testExtendedNames()
+    public function testExtendedNames(): void
     {
         $nameDays = new NameDays('name-days-lv-extended');
         $names    = $nameDays->getNames("09-24")->toArray();
@@ -92,9 +84,9 @@ final class NamesTest extends TestCase
         $this->assertSame($names, ["Agrits", "Agrons", "Steidzīte", "Steiga"]);
     }
 
-    public function testException()
+    public function testException(): void
     {
-        $this->expectException('\Exception');
+        $this->expectException(\Exception::class);
         new NameDays('test-exception');
     }
 }

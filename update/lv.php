@@ -15,7 +15,10 @@ function getJsonString(string $url): bool|string
 {
     $data = file_get_contents($url);
 
-    $nameDays = parseNames(explode("\n", $data));
+    $nameDays = [];
+    if($data) {
+        $nameDays = parseNames(explode("\n", $data));
+    }
 
     return json_encode($nameDays, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 }

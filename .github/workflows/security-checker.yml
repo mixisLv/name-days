@@ -1,3 +1,13 @@
-- name: The PHP Security Checker
-  uses: symfonycorp/security-checker-action@v5
+name: The PHP Security Checker
+
+on: [push, pull_request]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: symfonycorp/security-checker-action@v5
+
 

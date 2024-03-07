@@ -54,7 +54,7 @@ final class NamesTest extends TestCase
         $nameDays = new NameDays();
         $key      = $nameDays->getNames("02-29");
 
-        $this->assertSame($key->toString(), '-');
+        $this->assertSame($key->toString(), '–');
         $this->assertSame($key->toArray(), []);
     }
 

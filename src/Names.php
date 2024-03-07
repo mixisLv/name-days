@@ -4,9 +4,7 @@
  * @copyright Copyright (C) 2017 Mikus Rozenbergs
  */
 
-
 namespace mixisLv\NameDays;
-
 
 class Names
 {
@@ -33,7 +31,8 @@ class Names
      *
      * @return string
      */
-    public function key() {
+    public function key()
+    {
         return $this->key;
     }
 

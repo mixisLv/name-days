@@ -8,7 +8,7 @@ Latvian name day calendar data. I took names from [Latvian State Language Center
 
 ## Requirements
 
-* PHP >= 7.3.0
+* PHP >= 8.1
 
 ## Installation 
 

@@ -8,8 +8,6 @@
  * file that was distributed with this source code.
  */
 
-namespace SebastianBergmann\Comparator;
-
 use mixisLv\NameDays\NameDays;
 use PHPUnit\Framework\TestCase;
 
@@ -25,7 +23,7 @@ final class NamesTest extends TestCase
         $nameDays = new NameDays();
         $names    = $nameDays->getNames("09-29")->toArray();
 
-        $this->assertSame($names, ['Miķelis', 'Mikus', 'Miks', 'Mihails']);
+        $this->assertSame($names, ['Miķelis', 'Mikus', 'Miks', 'Mihails', 'Jumis']);
     }
 
     /**
@@ -38,7 +36,7 @@ final class NamesTest extends TestCase
         $nameDays = new NameDays();
         $names    = $nameDays->getNames("09-29")->toString();
 
-        $this->assertSame($names, 'Miķelis, Mikus, Miks, Mihails');
+        $this->assertSame($names, 'Miķelis, Mikus, Miks, Mihails, Jumis');
     }
 
     /**
@@ -52,6 +50,20 @@ final class NamesTest extends TestCase
         $key      = $nameDays->getDate("MiKuS");
 
         $this->assertSame($key, '09-29');
+    }
+
+    /**
+     * testEmpty
+     *
+     * @throws \Exception
+     */
+    public function testEmpty()
+    {
+        $nameDays = new NameDays();
+        $key      = $nameDays->getNames("02-29");
+
+        $this->assertSame($key->toString(), '');
+        $this->assertSame($key->toArray(), []);
     }
 
     /**

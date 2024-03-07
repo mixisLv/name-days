@@ -9,16 +9,16 @@ namespace mixisLv\NameDays;
 class Names
 {
     /** @var string */
-    private $key;
+    private string $key;
 
-    /** @var array */
-    private $names;
+    /** @var array<int, string> */
+    private array $names;
 
     /**
      * Names constructor.
      *
      * @param string $key
-     * @param array  $names
+     * @param array<int, string> $names
      */
     public function __construct(string $key, array $names)
     {
@@ -31,7 +31,7 @@ class Names
      *
      * @return string
      */
-    public function key()
+    public function key(): string
     {
         return $this->key;
     }
@@ -41,17 +41,17 @@ class Names
      *
      * @return string
      */
-    public function toString()
+    public function toString(): string
     {
-        return join(", ", $this->names);
+        return implode(", ", $this->names);
     }
 
     /**
      * toArray
      *
-     * @return array
+     * @return array<int, string>
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->names;
     }

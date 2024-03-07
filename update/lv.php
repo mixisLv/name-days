@@ -1,8 +1,8 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title>Latvian Name Days Examples DB update</title>
+    <title>Latvian Name Days DB update</title>
 </head>
 <body>
 
@@ -11,80 +11,30 @@
 
 require_once __DIR__ . '/../vendor/autoload.php'; // Autoload files using Composer autoload
 
-function getJsonString($url)
+function getJsonString(string $url): bool|string
 {
-    // Parse PDF file and build necessary objects.
-    $parser   = new \Smalot\PdfParser\Parser();
-    $pdf      = $parser->parseFile($url);
-    $nameDays = parseNames(explode("\n", $pdf->getText()));
+    $data = file_get_contents($url);
+
+    $nameDays = parseNames(explode("\n", $data));
 
     return json_encode($nameDays, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 }
 
-function parseNames($rows)
+/**
+ * @param array<int, string> $rows
+ * @return array<string, array<int, string>>
+ */
+function parseNames(array $rows): array
 {
-    $month    = 0;
     $nameDays = [];
     foreach ($rows as $row) {
-        $data = explode(".", $row);
-        if (isset($data[1]) && (int)$data[0] > 0) {
-            $nameDays[sprintf("%'.02d", $month) . "-" . sprintf("%'.02d", $data[0])] = array_map(
+        $data = explode(";", $row);
+        $date = explode(".", $data[0]);
+        if (isset($date[0],$date[1])) {
+            $nameDays[sprintf("%'.02d", $date[1]) . "-" . sprintf("%'.02d", $date[0])] = array_map(
                 'trim',
-                explode(',', str_replace(" ", "", $data[1]))
+                explode(' ', $data[1])
             );
-        } else {
-            if (strlen(trim($data[0])) < 4 || strlen(trim($data[0])) > 40) { // kaut kas nav labi ar mēnešiem
-                continue;
-            }
-            $month++;
-        }
-    }
-
-    return $nameDays;
-}
-
-
-function getJsonStringExt($url)
-{
-    // Parse PDF file and build necessary objects.
-    $parser   = new \Smalot\PdfParser\Parser();
-    $pdf      = $parser->parseFile($url);
-    $nameDays = parseNamesExt(explode("\n", $pdf->getText()));
-
-    return json_encode($nameDays, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-}
-
-function parseNamesExt($rows)
-{
-    $month = 0;
-    $date  = 0;
-
-    $nameDays = [];
-
-    array_shift($rows);
-    array_shift($rows);
-
-    foreach ($rows as $row) {
-        $data  = explode(".", $row);
-        $value = str_replace([" ", "\t"], "", $data[0]);
-
-        //print_r([$value]);
-        if (in_array(trim($value), ['JANVĀRIS', 'FEBRUĀRIS', 'MARTS', 'APRĪLIS', 'MAIJS', 'JŪNIJS', 'JŪLIJS', 'AUGUSTS', 'SEPTEMBRIS', 'OKTOBRIS', 'NOVEMBRIS', 'DECEMBRIS'])) {
-            $month++;
-            //print_r([$month, $value]);
-        } else {
-            if ((int)$value > 0) {
-                $date = (int)$value;
-            } else {
-                $key    = sprintf("%'.02d", $month) . "-" . sprintf("%'.02d", $date);
-                $values = array_filter(array_map('trim', explode(',', $value)), 'strlen');
-
-                if (isset($nameDays[$key])) {
-                    $nameDays[$key] = array_merge($nameDays[$key], $values);
-                } else {
-                    $nameDays[$key] = $values;
-                }
-            }
         }
     }
 
@@ -95,10 +45,10 @@ $lastUpdate = "/** Last updated: " . date('Y-m-d H:i:s') . " */\n\n";
 
 echo $lastUpdate;
 
-$jsonLvStd = getJsonString('http://vvc.gov.lv/advantagecms/export/docs/komisijas/tradic_v%C4%81rdadienu_saraksts_2022.pdf');
+$jsonLvStd = getJsonString('https://www.vvc.gov.lv/lv/media/157/download');
 file_put_contents('./../data/name-days-lv.json', $jsonLvStd);
 
-$jsonLvExtended = getJsonStringExt('http://vvc.gov.lv/advantagecms/export/docs/komisijas/paplasinatais_saraksts.pdf');
+$jsonLvExtended = getJsonString('https://www.vvc.gov.lv/lv/media/156/download');
 file_put_contents('./../data/name-days-lv-extended.json', $jsonLvExtended);
 
 ?>

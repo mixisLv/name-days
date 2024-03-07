@@ -8,8 +8,10 @@ namespace mixisLv\NameDays;
 
 class NameDays
 {
-    private $data = [];
-
+    /**
+     * @var array<string, array<int, string>> $data
+     */
+    private array $data = [];
 
     /**
      * NameDays constructor.
@@ -18,11 +20,9 @@ class NameDays
      *
      * @throws \Exception
      */
-    public function __construct($source = 'name-days-lv')
+    public function __construct(string $source = 'name-days-lv')
     {
         $this->loadData($source);
-
-        return $this;
     }
 
     /**
@@ -32,10 +32,8 @@ class NameDays
      *
      * @throws \Exception
      */
-    private function loadData($source)
+    private function loadData(string $source): void
     {
-        $dataFile = null;
-
         switch ($source) {
             case 'name-days-lv':
                 $dataFile = __DIR__ . '/../data/name-days-lv.json';
@@ -45,10 +43,15 @@ class NameDays
                 break;
             default:
                 throw new \Exception('NameDays data source not found');
-                break;
         }
 
-        $this->data = json_decode(file_get_contents($dataFile), true);
+        $data = [];
+        $json = file_get_contents($dataFile);
+        if ($json) {
+            $data = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        }
+
+        $this->data = is_array($data) ? $data : [];
     }
 
     /**
@@ -58,7 +61,7 @@ class NameDays
      *
      * @return Names
      */
-    public function getNames($date = null)
+    public function getNames(string $date = null): Names
     {
         $key = substr($date ?? date('m-d'), -5);
 
@@ -73,12 +76,12 @@ class NameDays
      *
      * @return string
      */
-    public function getDate($name, $withYear = false)
+    public function getDate(string $name, bool $withYear = false): ?string
     {
         $date       = null;
         $searchName = mb_strtolower($name);
         foreach ($this->data as $key => $names) {
-            if (in_array($searchName, array_map('mb_strtolower', $names))) {
+            if (in_array($searchName, array_map('mb_strtolower', $names), true)) {
                 $date = (new Names($key, $names))->key();
                 break;
             }

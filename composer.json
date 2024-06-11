@@ -27,11 +27,11 @@
     "autoload": {
         "psr-4": {
             "mixisLv\\NameDays\\": "src"
-        },
-        "autoload-dev": {
-            "psr-4": {
-                "mixisLv\\NameDays\\Tests\\": "tests"
-            }
         }
-    }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "mixisLv\\NameDays\\Tests\\": "tests"
+        }
+    }    
 }

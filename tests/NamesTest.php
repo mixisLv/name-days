@@ -81,7 +81,60 @@ final class NamesTest extends TestCase
         $nameDays = new NameDays('name-days-lv-extended');
         $names    = $nameDays->getNames("09-24")->toArray();
 
+        $this->assertSame($names, ["Agris", "Agrita", "Agrits", "Agrons", "Steidzīte", "Steiga"]);
+    }
+
+    /**
+     * testExtendedOnlyNames
+     *
+     * @throws \Exception
+     */
+    public function testExtendedOnlyNames(): void
+    {
+        $nameDays = new NameDays();
+        $names    = $nameDays->getExtendedNames("09-24")->toArray();
+
         $this->assertSame($names, ["Agrits", "Agrons", "Steidzīte", "Steiga"]);
+    }
+
+    /**
+     * testExtendedOnlyNamesKey
+     *
+     * @throws \Exception
+     */
+    public function testExtendedOnlyNamesKey(): void
+    {
+        $nameDays = new NameDays();
+        $names    = $nameDays->getExtendedNames("09-24");
+
+        $this->assertSame($names->key(), '09-24');
+    }
+
+    /**
+     * testExtendedOnlyNamesFromExtendedSource
+     *
+     * @throws \Exception
+     */
+    public function testExtendedOnlyNamesFromExtendedSource(): void
+    {
+        $nameDays = new NameDays('name-days-lv-extended');
+        $names    = $nameDays->getExtendedNames("09-24")->toArray();
+
+        $this->assertSame($names, ["Agrits", "Agrons", "Steidzīte", "Steiga"]);
+    }
+
+    /**
+     * testExtendedOnlyNamesEmpty
+     *
+     * @throws \Exception
+     */
+    public function testExtendedOnlyNamesEmpty(): void
+    {
+        $nameDays = new NameDays();
+        $names    = $nameDays->getExtendedNames("02-29");
+
+        $this->assertSame($names->toString(), '–');
+        $this->assertSame($names->toArray(), ['–']);
     }
 
     public function testException(): void

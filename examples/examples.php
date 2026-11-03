@@ -23,7 +23,7 @@ var_dump($nameDays->getNames("09-29"));
 var_dump($nameDays->getNames("2019-09-29"));
 var_dump($nameDays->getNames("09-29")->toarray());
 var_dump($nameDays->getNames("09-29")->toString());
-var_dump($nameDays->getDate("MiKuS"));
-var_dump($nameDays->getDate("MiKuS", true));
+var_dump($nameDays->getDate("Mikijs"));
+var_dump($nameDays->getDate("Mikijs", true));
 
 echo '</pre>';

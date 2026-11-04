@@ -79,7 +79,7 @@ class NameDays
                 continue;
             }
 
-            $data = str_getcsv($row);
+            $data = str_getcsv($row, ',', '"', '\\');
             if (!isset($data[0], $data[1])) {
                 continue;
             }

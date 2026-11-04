@@ -13,7 +13,7 @@ jobs:
       - name: Setup Composer Dependencies
         uses: php-actions/composer@v6
         with:
-          php_version: 8.5 # Optional: specify your required PHP version explicitly
+          php_version: 8.4 # Optional: specify your required PHP version explicitly
 
       - name: Run PHPUnit Tests
         uses: php-actions/phpunit@master

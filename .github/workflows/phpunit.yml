@@ -15,9 +15,12 @@ jobs:
         with:
           php_version: 8.4 # Optional: specify your required PHP version explicitly
 
-      - name: Run PHPUnit Tests
+      - name: PHPUnit Tests
         uses: php-actions/phpunit@master
+        env:
+          XDEBUG_MODE: coverage
         with:
           bootstrap: vendor/autoload.php
           configuration: phpunit.xml
+          php_extensions: xdebug
           args: --coverage-text

@@ -7,10 +7,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: php-actions/composer@v6
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: PHPUnit Tests
+      - name: Setup Composer Dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: 8.5 # Optional: specify your required PHP version explicitly
+
+      - name: Run PHPUnit Tests
         uses: php-actions/phpunit@master
         with:
           bootstrap: vendor/autoload.php
